@@ -1,3 +1,5 @@
+# Please bear with me - the head commit file became corrupted and I lost my readme draft although i was able to recover most of my file
+
 # Capstone Template
 
 
