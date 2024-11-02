@@ -1,95 +1,49 @@
-# Please bear with me - the head commit file became corrupted and I lost my readme draft although i was able to recover most of my file
+# Case Study: Apollo Beach’s Commercial Pier
+Evaluation and Selection of Marine Restoration Installations through ML Models
+The aim of this project is to utilize standard Data Science practices and utilize machine learning to inform decisions about human-induced ecosystem degradation and ecosystem restoration installations that can mitigate or mollify that damage.
+This project follows an ongoing project to build a commercial dock in Apollo Beach, Florida – a coastal community that sits in ‘Middle Tampa Bay’. Coastal construction of any kind has a large impact on the health of the local ecosystems. Disruption, dredging of the sea floor can permanently destroy entire ecosystems. 
 
-# Capstone Template
+
+### Objectives and Goals:
+The construction of a new dock will cause inevitable damage to the local habitats, impacting species diversity and reducing resilience of the ecosystem. In an effort to combat this, this study aims to employ data science techniques, including the design of an ML model, that can determine the most efficient and feasible restoration installations that can reduce the overall impact of the construction. As a case study, this project aims to serve as an example of how realistic efforts can help create a healthy medium between the burgeoning demands of humanity and the health of our natural resource and ecosystems. 
+
+### Current Status:
+The project is in the early stages of development. Presently, additional data sources are being consolidated. We have begun the process of cleaning incoming data and conducting preliminary EDA on the data. Due to the size and scale of the study, these first steps are being conducted on a subset of data, specifically benthic environments, placing an emphasis on species diversity, richness and the development of a baseline model that can serve as a template for further implementation among the other data sources.
+
+### Description of Data:
+Data has been acquired from a variety of sources in multiple formats. Each data set contains multiple tables that describe individual habitats and ecosystems found in Tampa Bay – or describe the anthropogenic negative pressures on these ecosystems. At present, the latter consist of coastal construction data and marine transit and recreational activity.
+Ecological data describes: benthic, pelagic, mangrove, oyster reef and seagrass ecosystems.
+Anthropogenic data describes: coastal construction, maritime activity and artificial nitrogen loading from local agriculture, residential communities and commercial sites. 
+There are limitations on the data due to availability of historic data regarding damaging human activity. While efforts are ongoing to amas additional data, the current set describe human activity from 2019-2024. Biological data is more available with relative consistency from 1993 to the present day.
+There is the possibility of bias to be found in the data given their disparate sources. Anthropogenic data have a tendency to omit details that describe incidents. Additionally, since some of the data has been sourced from private entities from local industry, it is always possible that the authors of that data will skew it in favor of the competing interests behind the damaging factors involved in the study. Best efforts are being made to control this – either by dismissing this data or inferring missing information through supplementary data acquired through other means. This does involve manually researching key events or large construction projects that would invariably have a negative impact on the local ecosystems.
+A list of the current data sets can be found with the references at the end of this document.
+
+### Description of Work:
+The project is still in the pre-processing stage. Data that describe environmental degradation are harder to acquire and require manual research. Data concerning ecosystem health is more readily available either through local regulatory agencies and academic institutions.
+Preliminary Analysis Methodologies:
+There has been no attempt to perform any type of significant regression on the processed data yet. Given the differences in scale of independent variables, using normalized regression methods is required to determine an accurate representation of continuous data. Reduction of features in the data, implementation of dummy variables and examination of collinearity and multicollinearity is ongoing. It is clear that it is present in the data and that’s to be expected. Measurements, such as temperature at the top vs the sea floor can have relatively little variation; however, this can still be important. Estuarine systems comprise a portion of the data – these systems are highly stratified by salinity and temperature which necessitates its inclusion in the EDA and should not be removed from the data set yet. This will be especially relevant when the data starts to account for sampling in overlapping environments – such as seagrass beds – which requires segmentation of those data.
+Target Features: Indices and supplementary data of interest
+Shannon-Weiner Diversity Index: A proxy measurement of overall ecosystem health and complexity
+Calculation of this index is calculated as:
+s
+H’ = - Σ pi ln pi
+i =1
+where H’ is the Species Diversity Index (SDI), s is the number of species, p¬I is the proportion of individuals of each species belonging to the ith species of the total number of individuals.¬2 (Nolan,K. Callahan, J. 2006)
+Tampa Bay Benthic Index (TBBI)
+TBBI is a ecosystem specific index formulated by Tampa Bay Estuary Program  to describe ecosystem health.  This value is calculated by a series of transformations of environmental and biological values including linear regression, linear discriminant analysis, normalization. The description of this transformation can be found in the referenced literature at the end of this document. 3
+11.01.2024. EDA Summary (detailed analysis can be found in the Jupyter notebooks):
+EDA has described some key aspects about the data:
+-	The frequency of benthic sampling is not consistent over time. There is a heavy skew towards data collected in the early 2000s. 
+-	Measurements of Species Richness and the derived calculated value Shannon Diversity index describe a decrease in ecosystem health in the early 2000s. The trend of these values are similar to those found in the frequency of sample. While it can be inferred that these are linked, additional statistical analysis is needed to prove any type of significance.
+-	Species Richness and SDI has become weaker in recent years. Richness has trended upwards while Diversity has decreased since 2015.
+-	Line plots of SDI over time have sharp  drops in values – some nearly hitting zero. This requires investigation – whether there are flaws in the data not identified during cleaning, zero sample events or other causes. It did raise the question, however, of looking at catastrophic events in the region – such as hurricanes and tornados  - analogous in relative scale to events like COVID. 
+
+### Detailed Description of EDA Analysis:
+So far, a subset of benthic ecosystem data has been cleaned and used for a preliminary EDA. This subset focuses on the geographic region surrounding the case study construction site. The raw data describes sediment toxicology, standard practice sampling information (GPS, temperature, salinity, dates), and species collection. 
+As this dataset was explored, the need for a standardized measurement of ecosystem health is needed. Due to its wide applicability in any given environment, It was determined that the Shannon-Weiner Diversity Index (SDI) has the potential to represent a normalized value. This would allow for measurements, comparisons among ecosystems. Ultimately, with supplementary data, it can be used to create a composite, weighted index to represent the overall health of Tampa Bay.
+Plotting of the overall data sets demonstrates sampling in a variety of habitats throughout the bay and nearby coastal systems. The overall dataset is comprehensive and will be sufficient, in complement with other data sets, for the overall goals of this study.
+In a healthy ecosystem, SDI is expected to have a close relationship with Species Richness. It is surprising that the correlation between the two isn’t as strong over time as expected in the data. This could be due distribution of sampling over time. It can also indicate stress on the ecosystem from outside pressures. In this case, species richness has trended upwards while diversity has returned to original levels from when the data collection began. 
 
 
 
-## Getting started
-
-To make it easy for you to get started with GitLab, here's a list of recommended next steps.
-
-Already a pro? Just edit this README.md and make it your own. Want to make it easy? [Use the template at the bottom](#editing-this-readme)!
-
-## Add your files
-
-- [ ] [Create](https://docs.gitlab.com/ee/user/project/repository/web_editor.html#create-a-file) or [upload](https://docs.gitlab.com/ee/user/project/repository/web_editor.html#upload-a-file) files
-- [ ] [Add files using the command line](https://docs.gitlab.com/ee/gitlab-basics/add-file.html#add-a-file-using-the-command-line) or push an existing Git repository with the following command:
-
-```
-cd existing_repo
-git remote add origin https://gitlab.cs.unh.edu/chu22/Capstone-template.git
-git branch -M main
-git push -uf origin main
-```
-
-## Integrate with your tools
-
-- [ ] [Set up project integrations](https://gitlab.cs.unh.edu/chu22/Capstone-template/-/settings/integrations)
-
-## Collaborate with your team
-
-- [ ] [Invite team members and collaborators](https://docs.gitlab.com/ee/user/project/members/)
-- [ ] [Create a new merge request](https://docs.gitlab.com/ee/user/project/merge_requests/creating_merge_requests.html)
-- [ ] [Automatically close issues from merge requests](https://docs.gitlab.com/ee/user/project/issues/managing_issues.html#closing-issues-automatically)
-- [ ] [Enable merge request approvals](https://docs.gitlab.com/ee/user/project/merge_requests/approvals/)
-- [ ] [Set auto-merge](https://docs.gitlab.com/ee/user/project/merge_requests/merge_when_pipeline_succeeds.html)
-
-## Test and Deploy
-
-Use the built-in continuous integration in GitLab.
-
-- [ ] [Get started with GitLab CI/CD](https://docs.gitlab.com/ee/ci/quick_start/index.html)
-- [ ] [Analyze your code for known vulnerabilities with Static Application Security Testing (SAST)](https://docs.gitlab.com/ee/user/application_security/sast/)
-- [ ] [Deploy to Kubernetes, Amazon EC2, or Amazon ECS using Auto Deploy](https://docs.gitlab.com/ee/topics/autodevops/requirements.html)
-- [ ] [Use pull-based deployments for improved Kubernetes management](https://docs.gitlab.com/ee/user/clusters/agent/)
-- [ ] [Set up protected environments](https://docs.gitlab.com/ee/ci/environments/protected_environments.html)
-
-***
-
-# Editing this README
-
-When you're ready to make this README your own, just edit this file and use the handy template below (or feel free to structure it however you want - this is just a starting point!). Thanks to [makeareadme.com](https://www.makeareadme.com/) for this template.
-
-## Suggestions for a good README
-
-Every project is different, so consider which of these sections apply to yours. The sections used in the template are suggestions for most open source projects. Also keep in mind that while a README can be too long and detailed, too long is better than too short. If you think your README is too long, consider utilizing another form of documentation rather than cutting out information.
-
-## Name
-Choose a self-explaining name for your project.
-
-## Description
-Let people know what your project can do specifically. Provide context and add a link to any reference visitors might be unfamiliar with. A list of Features or a Background subsection can also be added here. If there are alternatives to your project, this is a good place to list differentiating factors.
-
-## Badges
-On some READMEs, you may see small images that convey metadata, such as whether or not all the tests are passing for the project. You can use Shields to add some to your README. Many services also have instructions for adding a badge.
-
-## Visuals
-Depending on what you are making, it can be a good idea to include screenshots or even a video (you'll frequently see GIFs rather than actual videos). Tools like ttygif can help, but check out Asciinema for a more sophisticated method.
-
-## Installation
-Within a particular ecosystem, there may be a common way of installing things, such as using Yarn, NuGet, or Homebrew. However, consider the possibility that whoever is reading your README is a novice and would like more guidance. Listing specific steps helps remove ambiguity and gets people to using your project as quickly as possible. If it only runs in a specific context like a particular programming language version or operating system or has dependencies that have to be installed manually, also add a Requirements subsection.
-
-## Usage
-Use examples liberally, and show the expected output if you can. It's helpful to have inline the smallest example of usage that you can demonstrate, while providing links to more sophisticated examples if they are too long to reasonably include in the README.
-
-## Support
-Tell people where they can go to for help. It can be any combination of an issue tracker, a chat room, an email address, etc.
-
-## Roadmap
-If you have ideas for releases in the future, it is a good idea to list them in the README.
-
-## Contributing
-State if you are open to contributions and what your requirements are for accepting them.
-
-For people who want to make changes to your project, it's helpful to have some documentation on how to get started. Perhaps there is a script that they should run or some environment variables that they need to set. Make these steps explicit. These instructions could also be useful to your future self.
-
-You can also document commands to lint the code or run tests. These steps help to ensure high code quality and reduce the likelihood that the changes inadvertently break something. Having instructions for running tests is especially helpful if it requires external setup, such as starting a Selenium server for testing in a browser.
-
-## Authors and acknowledgment
-Show your appreciation to those who have contributed to the project.
-
-## License
-For open source projects, say how it is licensed.
-
-## Project status
-If you have run out of energy or time for your project, put a note at the top of the README saying that development has slowed down or stopped completely. Someone may choose to fork your project or volunteer to step in as a maintainer or owner, allowing your project to keep going. You can also make an explicit request for maintainers.
+### Visuals (to be inserted)
