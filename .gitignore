@@ -1,4 +1,3 @@
-*.csv
 *.log
 
 #jupyter stuff we don't need
